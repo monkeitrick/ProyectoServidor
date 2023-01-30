@@ -24,36 +24,39 @@ CREATE TABLE CATEGORIA (
     CONSTRAINT PK_CATEGORIA PRIMARY KEY (id) 
 );
 INSERT INTO CATEGORIA (id, nombre) VALUES (1, 'DOCENTES');
-INSERT INTO CATEGORIA (id, nombre) VALUES (2, 'POLITICOS');
-INSERT INTO CATEGORIA (id, nombre) VALUES (3, 'CIVILES');
-INSERT INTO CATEGORIA (id, nombre) VALUES (4, 'EX PAREJAS');
+INSERT INTO CATEGORIA (id, nombre) VALUES (2, 'POLITICOS'); 
+INSERT INTO CATEGORIA (id, nombre) VALUES (3, 'EX PAREJAS');
 CREATE TABLE PRODUCTO (
     id int(11) AUTO_INCREMENT,
     nombre varchar(50) NOT NULL,
-    descripcion varchar(200),
+    descripcion varchar(500),
     precio double,
+    idCategoria int(11),
     CONSTRAINT PK_PRODUCTO PRIMARY KEY (id),
-    idCategoria int(11) FOREIGN KEY REFERENCES CATEGORIA(id)
+    CONSTRAINT fk_categoria_producto_idcat FOREIGN KEY (idCategoria) REFERENCES CATEGORIA(id)
 );
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Doctor Muerte', 745.19, 'Doctor muerte practica el sadismo con sus victimas. Prefiere a los civiles. Cuando el sadismo tiene carácter predominantemente sexual es una parafilia, y consiste en una forma de obtener excitación y placer sexual causando dolor físico o humillación. El sadismo implica impulsos sexuales y comportamientos que implican actos reales, no simulados, con o sin el consentimiento de la víctima, en los que el sufrimiento psicológico o físico y la humillación del sujeto sometido es lo que genera la excitación sexual.', 4);
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Barba Azul', 1245.29, 'Barba Azul practica el asesinato ritual con sus victimas. Una vez obtenido el objetivo a asesinar le hara pasar un buen rato antes de dejarlo descansar. Jugara con cada una de sus partes hasta que no pueda sentir dolor alguno. Cuando eso ocurre es porque ya esta muerto. Un asesinato eficaz y de lo menos discreto para que se entere todo el mundo. Barba Azul se centra en los POLITICOS corruptos.', 2);
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Ángel de la Muerte', 725.99, 'El Ángel de la Muerte practica el asesinato en serie. Usualmente empleado como un cuidador o enfermero. Según los mitos se trataría de asesinas; por el contrario, en realidad, una parte sustancial de los ángeles de la muerte ha estado conformada por hombres.​ A menudo, el ángel de la muerte se encuentra en una posición de poder o son motivados por mantener el control.', 2);
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('El Asesino del Turbante', 945.29, 'El Ángel de la Muerte practica el asesinato en serie. Usualmente empleado como un cuidador o enfermero. Según los mitos se trataría de asesinas; por el contrario, en realidad, una parte sustancial de los ángeles de la muerte ha estado conformada por hombres.​ A menudo, el ángel de la muerte se encuentra en una posición de poder o son motivados por mantener el control.', 2);
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('El Carnicero de Rostov', 1645.39, 'El Carnicero de Rostov practica el vampirismo. El vampirismo clínico es un raro trastorno mental, una parafilia caracterizada por ser asociada con una necesidad compulsiva de ver, sentir o ingerir la sangre existiendo o no el autoengaño creencial de ser un vampiro.', 1);
-INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Alfredo Romperalph', 1345.39, 'Alfredo Romperalph practica el vampirismo y tiene una gran obsesion con los docentes. El vampirismo clínico es un raro trastorno mental, una parafilia caracterizada por ser asociada con una necesidad compulsiva de ver, sentir o ingerir la sangre existiendo o no el autoengaño creencial de ser un vampiro.', 1);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Doctor Muerte', 745.19, 'Doctor muerte practica el sadismo con sus victimas. Prefiere hacer sufrir a tu ex pareja. Cuando el sadismo tiene carácter predominantemente sexual es una parafilia, le gusta humillar a sus victimas.', 3);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Barba Azul', 1245.29, 'Barba Azul practica el asesinato ritual con sus victimas. Odia a los politicos y en estos tienes un 30% de descuento. Una vez obtenido el objetivo a asesinar le hara pasar un buen rato antes de dejarlo descansar.', 2);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Ángel de la Muerte', 725.99, 'El Ángel de la Muerte practica el asesinato en serie. Usualmente empleado como un cuidador o enfermero. Este esperara a cada politico en el hospital y aprovechara para meterle una vacuna que lo llevara a Marte!', 2);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('El Asesino del Turbante', 945.29, 'El Ángel del Turbante practica el asesinato en serie. A menudo, el ángel del Turbante se encuentra en una posición de poder o son motivados por mantener el control y eso lo logran matando politicos.', 2);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('El Carnicero de Rostov', 1645.39, 'El Carnicero de Rostov practica el vampirismo. El vampirismo clínico es un raro trastorno mental, una parafilia caracterizada por ser asociada con una necesidad de ingerir la sangre como un vampiro.', 1);
+INSERT INTO PRODUCTO (nombre, precio, descripcion, idCategoria) VALUES ('Alfredo Romperalph', 1345.39, 'Alfredo Romperalph practica el vampirismo y tiene una gran obsesion con los docentes. El vampirismo clínico es un raro trastorno mental, una parafilia caracterizada por ser asociada con una necesidad compulsiva de sangre.', 1);
 
 CREATE TABLE PEDIDO (
     id int(11) AUTO_INCREMENT, 
     total double,
     fecha datetime DEFAULT CURRENT_TIMESTAMP,
+    idUsuario int(11),
     CONSTRAINT PK_PEDIDO PRIMARY KEY (id),
-    idUser int(11) FOREIGN KEY REFERENCES USUARIO(id)
+    CONSTRAINT fk_usuario_pedido_idUser FOREIGN KEY (idUsuario) REFERENCES USUARIO(id) 
 );
 CREATE TABLE LINEASPEDIDO (
     id int(11) AUTO_INCREMENT,
     cantidad int(10), 
-    CONSTRAINT PK_LINEASPEDIDO PRIMARY KEY (id),
-    idPedido int(11) FOREIGN KEY REFERENCES PEDIDO(id),
-    idProducto int(11) FOREIGN KEY REFERENCES PRODUCTO(id)
+    idPedido int(11),
+    idProducto int(11),
+    CONSTRAINT PK_LINEASPEDIDO PRIMARY KEY (id), 
+    CONSTRAINT fk_producto_lineasPedido_idPedido FOREIGN KEY (idPedido) REFERENCES PEDIDO(id),
+    CONSTRAINT fk_producto_lineasPedido_idProducto FOREIGN KEY (idProducto) REFERENCES PRODUCTO(id) 
 );
 

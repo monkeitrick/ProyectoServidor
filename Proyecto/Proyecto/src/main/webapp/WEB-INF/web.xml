@@ -4,6 +4,18 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>servletProveedores</servlet-name>
+    <servlet-class>servlets.servletProveedores</servlet-class>
+    <init-param>
+      <param-name>fichero</param-name>
+      <param-value>proveedores.txt</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletProveedores</servlet-name>
+    <url-pattern>/servletProveedores</url-pattern>
+  </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/poolTiendaDB</res-ref-name>

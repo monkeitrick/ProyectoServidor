@@ -16,11 +16,11 @@
 		   		<th>Cantidad</th>
 		   		<th>Cambiar</th>
 		   	</tr>		  
-			<c:forEach items="${carroCompra}" var="carro">
+			<c:forEach items="${carroCompra.getCarro()}" var="carro">
 				<tr>
-					<td><c:out value='${carro.nombre}'/></td>
-					<td><c:out value='${carro.precio}'/></td>
-					<td><c:out value='${carro.cantidad}'/></td>
+					<td><c:out value='${carro.value.producto.getNombre()}'/></td>
+					<td><c:out value='${carro.value.producto.getPrecio()}'/></td>
+					<td><c:out value='${carro.value.cantidad()}'/></td>
 					<td><button type="submit" class="btn btn-danger" name="borrar" value="${carro.key}">Borrar</button></td>
 				</tr>
 			</c:forEach>

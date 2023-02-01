@@ -6,6 +6,7 @@ public class LineasPedido {
 	private Pedido pedido;
 	private Producto producto;
 	
+	// Constructores
 	public LineasPedido(int id, int cantidad, Pedido pedido, Producto producto) {
 		this.id = id;
 		this.cantidad = cantidad;
@@ -13,6 +14,11 @@ public class LineasPedido {
 		this.producto = producto;
 	}
 
+	public LineasPedido() {
+		
+	}
+	
+	// get / set
 	public int getId() {
 		return id;
 	}

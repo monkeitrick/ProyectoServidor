@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Aniadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 
@@ -28,7 +29,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="sumbit" class="btn btn-danger" name="verCarro">Ver cesta</button>
+		<button type="sumbit" class="btn btn-danger" name="verCesta">Ver cesta</button>
     </form>
 <!-- Aniadimos el footer -->
 <c:import url="footer.jsp"/>

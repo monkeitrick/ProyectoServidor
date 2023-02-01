@@ -8,13 +8,18 @@ public class Pedido {
 	private Date fecha;
 	private Usuario user;
 	
+	// Construcores
 	public Pedido(int id, double total, Date fecha, Usuario user) {
 		this.id = id;
 		this.total = total;
 		this.fecha = fecha;
 		this.user = user;
 	}
+	public Pedido() {
+		
+	}
 
+	// get / set
 	public Integer getId() {
 		return id;
 	}

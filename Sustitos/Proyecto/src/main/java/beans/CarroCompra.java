@@ -6,14 +6,14 @@ import java.util.HashMap;
 public class CarroCompra {
 	private HashMap<Integer, LineasPedido> carro = new HashMap<Integer, LineasPedido>();
 	
-	// Metodo aniadeLinea, añade lineas al atributo carro, en caso de que el idItem ya
+	// Metodo aniadeLinea, añade lineas al atributo carro, en caso de que el id de Poducto ya
 	// se encuentra se le suma la cantidad
 	public void aniadeLinea(LineasPedido linea) {
-		int idItem = linea.getItem().getIdItem();
-		if(carro.containsKey(idItem))
-			linea.setCantidad(linea.getCantidad() + carro.get(idItem).getCantidad());
+		int idProducto = linea.getProducto().getId();
+		if(carro.containsKey(idProducto))
+			linea.setCantidad(linea.getCantidad() + carro.get(idProducto).getCantidad());
 		
-		carro.put(idItem, linea);
+		carro.put(idProducto, linea);
 	}
 	
 	// Metodo borraLinea
@@ -22,7 +22,7 @@ public class CarroCompra {
 			carro.remove(iditem);
 	}
 	
-	// Metodo getLineaPedido, devuelve una LineaPedido pasandole un iditem
+	// Metodo getLineaPedido, devuelve una LineaPedido pasandole un id Producto
 	public LineasPedido getLineaPedido(int iditem){
 		LineasPedido linea = carro.get(iditem);
 		return linea;

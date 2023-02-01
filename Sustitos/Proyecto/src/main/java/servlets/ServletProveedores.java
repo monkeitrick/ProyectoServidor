@@ -3,14 +3,10 @@ package servlets;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +18,12 @@ import beans.Proveedor;
  * Servlet implementation class ProcesaApuesta
  */
 public class ServletProveedores extends HttpServlet {
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        //HttpSession session = request.getSession(true);
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
         String fichero = this.getInitParameter("fichero");
         try {
             String ruta = this.getServletContext().getRealPath(fichero);
@@ -51,13 +50,7 @@ public class ServletProveedores extends HttpServlet {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+        request.getRequestDispatcher("listadoProveedores.jsp").forward(request, response);
 	}
 
 	/**

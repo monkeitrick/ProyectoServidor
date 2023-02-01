@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!-- Aï¿½adimos la cabecera -->
@@ -5,7 +6,7 @@
 
 	<!-- Si no existe el array de Proveedores lo crea-->
 	<c:if test="${proveedores == null}">
-		<jsp:forward page="servletProveedores"/>
+		<jsp:forward page="ServletProveedores"/>
 	</c:if>
 
 	<!-- Lista de proveedores -->
@@ -14,7 +15,7 @@
 		<tr>
 	   		<th>Nombre Empresa</th>
 	   		<th>Encargado</th>
-	   		<th>CategorÃ­a</th>
+	   		<th>Categoría</th>
             <th>Telefono</th>
             <th>Email</th>
 	   	</tr>

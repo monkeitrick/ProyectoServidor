@@ -30,7 +30,7 @@
 	   </div>
 	  
 	  <!-- Submit button -->
-	  <button type="button" class="btn btn-danger btn-block mb-4" name="login">Entrar</button>
+	  <button type="submit" class="btn btn-danger btn-block mb-4" name="login">Entrar</button>
 	  <c:if test="${mensajeError != null}">
 			<script type='text/javascript'>alert("${mensajeError}");</script>
 	  </c:if>

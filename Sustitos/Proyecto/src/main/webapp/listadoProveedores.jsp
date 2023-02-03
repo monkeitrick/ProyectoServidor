@@ -10,26 +10,23 @@
 	</c:if>
 
 	<!-- Lista de proveedores -->
-	<h1>Proveedores</h1>
-	<table class="table">
-		<tr>
-	   		<th>Nombre Empresa</th>
-	   		<th>Encargado</th>
-	   		<th>Categoría</th>
-            <th>Telefono</th>
-            <th>Email</th>
-	   	</tr>
-	  
-		<c:forEach items="${proveedores}" var="proveedor">
+	<div class="container">
+		<h1>Proveedores</h1>
+		<table class="table">
 			<tr>
-				<td><c:out value='${proveedor.nombre}'/></td>
-				<td><c:out value='${proveedor.encargado}'/></td>
-				<td><c:out value='${proveedor.categoria}'/></td>
-				<td><c:out value='${proveedor.telefono}'/></td>
-				<td><c:out value='${proveedor.email}'/></td>
-			</tr>
-		</c:forEach>
-	</table>
-    
+		   		<th>Nombre Empresa</th>
+		   		<th>Categoría</th>
+		   		<th>Mas datos</th>
+		   	</tr>
+		  
+			<c:forEach items="${proveedores}" var="proveedor">
+				<tr>
+					<td><c:out value='${proveedor.value.nombre}'/></td>
+					<td><c:out value='${proveedor.value.categoria}'/></td>
+					<td><a class="btn btn-danger" href="ServletProveedores?claveProveedor=${proveedor.key}">Mas información</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	   </div>
 <!-- Aniadimos el footer -->
 <c:import url="footer.jsp"/>

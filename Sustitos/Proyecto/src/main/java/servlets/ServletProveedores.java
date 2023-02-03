@@ -1,9 +1,12 @@
 package servlets;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import javax.servlet.ServletException;
@@ -25,6 +28,7 @@ public class ServletProveedores extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
         String fichero = this.getInitParameter("fichero");
+        HashMap<String,Proveedor> lstProveedores = null;
         try {
             String ruta = this.getServletContext().getRealPath(fichero);
             File myObj = new File(ruta);
@@ -35,7 +39,9 @@ public class ServletProveedores extends HttpServlet {
                 proveedores.add(data);
             }
             myReader.close();
-            ArrayList<Proveedor> lstProveedores = new ArrayList<Proveedor>();
+           
+            lstProveedores = new HashMap<String,Proveedor>();
+           
             for(String proveedor: proveedores){
             	String[] partes = proveedor.split(";");
                 Proveedor p = new Proveedor();
@@ -44,11 +50,17 @@ public class ServletProveedores extends HttpServlet {
                 p.setCategoria(partes[2]);
                 p.setTelefono(Integer.parseInt(partes[3]));
                 p.setEmail(partes[4]);
-                lstProveedores.add(p);
+                lstProveedores.put(p.getNombre(),p);
             }
             this.getServletContext().setAttribute("proveedores", lstProveedores);
+            session.setAttribute("proveedores", lstProveedores);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+        if(request.getParameter("claveProveedor")!= null) {
+        	request.setAttribute("proveedor", lstProveedores.get(request.getParameter("claveProveedor")));
+        	session.setAttribute("proveedor", lstProveedores.get(request.getParameter("claveProveedor")));
+        	request.getRequestDispatcher("detalleProveedor.jsp").forward(request, response);
         }
         request.getRequestDispatcher("listadoProveedores.jsp").forward(request, response);
 	}
@@ -57,5 +69,52 @@ public class ServletProveedores extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		
+		//Al pulsar el boton volver nos redirige a listado de proveedores 
+		if(request.getParameter("volver")!= null) {
+			request.getRequestDispatcher("listadoProveedores.jsp").forward(request, response);
+		}else {
+		// Esto nos hara cuando se pulse el boton de guardar cambios
+			
+			Proveedor proveedorNuevo = (Proveedor) session.getAttribute("proveedor");
+		
+			//Si el encargado ha sido actualizado lo cambiamos
+			if(request.getParameter("encargado")!= null) {
+				proveedorNuevo.setEncargado(request.getParameter("encargado"));
+			}
+			
+			// Si la categoria ha sido actualizada la cambiamos
+			if(request.getParameter("categoria")!= null) {
+				proveedorNuevo.setEncargado(request.getParameter("categoria"));
+			}
+			
+			// Si el telefono ha sido actualizado lo cambiamos
+			if(request.getParameter("telefono")!= null) {
+				proveedorNuevo.setEncargado(request.getParameter("telefono"));
+			}
+			
+			// Si el email ha sido actualizado lo cambiamos
+			if(request.getParameter("email")!= null) {
+				proveedorNuevo.setEncargado(request.getParameter("email"));
+			}
+			
+			// Actualizamos el mapa de proveedores
+			HashMap<String,Proveedor> lstProveedores = (HashMap<String, Proveedor>) session.getAttribute("proveedores");
+			lstProveedores.put(request.getParameter("claveProveedor"), proveedorNuevo);
+			
+			// Actualizamos el fichero de proveedores
+			String fichero = this.getInitParameter("fichero");
+			
+			BufferedWriter out = new BufferedWriter(new FileWriter(fichero));
+			for(Proveedor p:lstProveedores.values()) {
+				out.write(p.toString());
+			}
+			
+			out.close();
+			
+			// Redirigimos a la pantalla de listado de proveedores
+			request.getRequestDispatcher("listadoProveedores.jsp").forward(request, response);
+		}
 	}
 }

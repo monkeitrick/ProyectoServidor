@@ -7,6 +7,10 @@ public class Producto {
 	private double precio;
 	private Categoria cat;
 	
+	// Constructor
+	public Producto() {
+		
+	}
 	public Producto(int id, String nombre, String descripcion, double precio, Categoria cat) {
 		this.id = id;
 		this.nombre = nombre;
@@ -15,6 +19,7 @@ public class Producto {
 		this.cat = cat;
 	}
 
+	// get / set 
 	public int getId() {
 		return id;
 	}

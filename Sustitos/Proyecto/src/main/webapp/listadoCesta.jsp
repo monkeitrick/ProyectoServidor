@@ -26,9 +26,11 @@
 			</c:forEach>
 			<tr>	
 				<td colspan="3"><b>TOTAL:</b></td>
-				<td colspan="3"><c:out value='${carroCompra.total()}'/>€</td>
+				<td><c:out value='${carroCompra.total()}'/>€</td>
 			</tr>
 		</table>
+		<button type="submit" name="vaciar">VACIAR CESTA</button>
+		<button type="submit" name="continuar" >CONTINUAR COMPRANDO</button>
     </form>
 <!-- Aniadimos el footer -->
 <c:import url="footer.jsp"/>

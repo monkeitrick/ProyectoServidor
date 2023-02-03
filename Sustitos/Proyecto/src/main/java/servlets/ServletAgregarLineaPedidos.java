@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,20 +16,19 @@ import beans.LineasPedido;
 import beans.Pedido;
 import beans.Producto;
 import beans.Usuario;
+import dao.PedidoDAO;
 
 /**
  * Servlet implementation class ServletAgregarLineaPedidos
  */
 @WebServlet("/ServletAgregarLineaPedidos")
 public class ServletAgregarLineaPedidos extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletAgregarLineaPedidos() {
-        super();
-        // TODO Auto-generated constructor stub
+	private PedidoDAO bdPedido;
+    
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        bdPedido = new PedidoDAO();
     }
 
 	/**
@@ -58,16 +58,15 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 		
 		
 		if (request.getParameter("aniadir") != null) {
-			Producto producto = bdPedido.buscaItemPorId(Integer.parseInt(request.getParameter("aniadir")));
+			Producto producto = bdPedido.buscaProductoPorId(Integer.parseInt(request.getParameter("aniadir")));
 			
 			Pedido pedido = new Pedido();
-			pedido.setIdPedido(bdKeys.siguienteId("pedidos"));
-			double importe = item.getPrecio() * Integer.parseInt(request.getParameter("" + item.getIdItem()));
+			double importe = producto.getPrecio() * Integer.parseInt(request.getParameter("" + producto.getId()));
 			pedido.setTotal(importe);
 			Date date = new Date();
 			pedido.setFecha(date);
 			Usuario cliente = (Usuario) request.getSession().getAttribute("cliente");
-			pedido.setCliente(cliente);
+			pedido.setUser(cliente);
 			
 			LineasPedido lineaPedido = new LineasPedido();
 			lineaPedido.setCantidad(Integer.parseInt(request.getParameter("" + producto.getId())));
@@ -75,34 +74,25 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 			carroCompra.aniadeLinea(lineaPedido);
 			session.setAttribute("carroCompra", carroCompra);
 			
-			request.getRequestDispatcher("tienda.jsp").forward(request, response);
-		}
-		
-		if (request.getParameter("continuar") != null) {
-			request.getRequestDispatcher("tienda.jsp").forward(request, response);
+			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 		}
 		
 		if (request.getParameter("vaciar") != null) {
 			request.getRequestDispatcher("ServletVaciarCesta").forward(request, response);
 		}
 		
-		if (request.getParameter("hacer_pedido") != null) {
-			request.getRequestDispatcher("pedir.jsp").forward(request, response);
+		if (request.getParameter("continuar") != null) {
+			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 		}
 		
-		if (request.getParameter("borrar") != null || request.getParameter("cambiar") != null) {
-			String accion = "";
-			if (request.getParameter("borrar") != null) {
-				accion = "borrar";
-				request.getSession().setAttribute("itemTratado", request.getParameter("borrar"));
-			} else {
-				accion = "cambiar";
-				Item item = bdPedido.buscaItemPorId(Integer.parseInt(request.getParameter("cambiar")));
-				request.getSession().setAttribute("itemTratado", request.getParameter("cambiar"));
-				request.getSession().setAttribute("cantidadNueva", request.getParameter("" + item.getIdItem()));
-			}
-			request.getSession().setAttribute("accion", accion);
-			request.getRequestDispatcher("ServletUpdateLineaPedido").forward(request, response);
+		/*if (request.getParameter("hacer_pedido") != null) {
+			request.getRequestDispatcher("pedir.jsp").forward(request, response);
+		}*/
+		
+		if (request.getParameter("borrar") != null) {
+			carroCompra = (CarroCompra) session.getAttribute("carroCompra");
+			carroCompra.borraLinea(Integer.parseInt(request.getParameter("borrar")));
+			request.getRequestDispatcher("listadoCesta.jsp").forward(request, response);
 		}
 	}
 

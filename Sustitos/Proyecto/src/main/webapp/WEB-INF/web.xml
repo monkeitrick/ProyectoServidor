@@ -12,9 +12,17 @@
       <param-value>proveedores.txt</param-value>
     </init-param>
   </servlet>
+  <servlet>
+    <servlet-name>ServletVaciarCesta</servlet-name>
+    <servlet-class>servlets.ServletVaciarCesta</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ServletProveedores</servlet-name>
     <url-pattern>/ServletProveedores</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ServletVaciarCesta</servlet-name>
+    <url-pattern>/ServletVaciarCesta</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>

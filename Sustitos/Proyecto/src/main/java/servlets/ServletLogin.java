@@ -45,20 +45,22 @@ public class ServletLogin extends HttpServlet {
 			Usuario user = u.buscaUsuario(email, pass);
 			if (user == null) {
 				request.getSession().setAttribute("mensaje", "El usuario introducido no existe. Rellene los campos nuevamente.");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				response.sendRedirect("login.jsp");  
 			}else {
 				request.getSession().setAttribute("usuario", user); 
 				if (user.getEmail().equals("admin@gmail.com")) {
-					request.getRequestDispatcher("listadoUsuarios.jsp").forward(request, response);
+					response.sendRedirect("listadoUsuarios.jsp");   
 				}
 				if (user.getValidado() != 1) { 
 					//u.enviarConGMail(user.getEmail(), "VERIFICACIÓN SUSTITOS", "Cadena: "+user.getStrValidado());
 					request.getSession().setAttribute("mensaje", "Revisa tu correo e introduce la clave que se te ha enviado.");
 					request.getSession().setAttribute("strValidar", user.getStrValidado());
-					request.getRequestDispatcher("login.jsp").forward(request, response);
+					response.sendRedirect("login.jsp");  
 					
+				}else {
+					response.sendRedirect("listadoProductos.jsp"); 
 				}
-				request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
+				
 			}
 			
 		}

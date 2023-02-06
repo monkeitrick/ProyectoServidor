@@ -31,6 +31,7 @@ public class ServletUsuarios extends HttpServlet {
 			request.getSession().setAttribute("lstUsuValidado", bdUsuario.lstUsuariosValidados());
 			request.getSession().setAttribute("lstUsuNoValidado", bdUsuario.lstUsuariosNoValidados());
 		}
+        request.getRequestDispatcher("listadoUsuarios.jsp").forward(request, response);
 	}
 
 	/**

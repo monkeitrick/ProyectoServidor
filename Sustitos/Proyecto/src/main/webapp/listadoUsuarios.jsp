@@ -6,7 +6,7 @@
 
 	<!-- Si no existe el array de productos lo crea-->
 	<c:if test="${lstUsuValidado == null}">
-		<jsp:forward page="servletUsuarios"/>
+		<jsp:forward page="ServletUsuarios"/>
 	</c:if>
 
 	<!-- Lista de usuario validados -->

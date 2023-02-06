@@ -4,6 +4,9 @@
 <!-- Aniadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 
+<!-- Aniadimos menu lateral 
+<c:import url="menuLateral.jsp"/> -->
+
 	<!-- Si no existe el array de Proveedores lo crea-->
 	<c:if test="${proveedores == null}">
 		<jsp:forward page="ServletProveedores"/>

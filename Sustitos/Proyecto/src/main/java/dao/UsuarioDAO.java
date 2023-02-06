@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -18,6 +19,50 @@ import conex.ConexPoolBD;
 public class UsuarioDAO {
 	private ConexPoolBD gestorBDXml = new ConexPoolBD();
 	
+	// Metodo que lista los usuarios validados
+	public ArrayList<Usuario> lstUsuariosValidados() {
+		ArrayList<Usuario> lstusuarios = new ArrayList<Usuario>();
+		 try{                  		         
+			 	Connection con = gestorBDXml.getDataSource().getConnection(); 
+	        	String sql = "SELECT * FROM usuario WHERE validado = '" + 1 + "'";
+	        	Statement st = con.createStatement();
+	            ResultSet rs = st.executeQuery(sql);            
+	            if(rs.next()) { 
+	            	Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("contrasena"), rs.getString("imagen"), rs.getString("descripcion"), rs.getString("direccion"), rs.getInt("cp"), rs.getString("municipio"), rs.getString("provincia"), rs.getString("pais"), rs.getInt("telefono"), rs.getString("email"), rs.getInt("validado"), rs.getString("strValidado"));
+	            	lstusuarios.add(u);
+	            }
+	            rs.close();
+	            st.close();
+	            con.close();
+	         }
+	         catch (Exception e)  {
+	             System.err.println("Error en lstUsuariosValidados: " + e);
+	         } 
+		 return lstusuarios;
+	}
+	// Metodo que lista los usuarios no validados
+	public ArrayList<Usuario> lstUsuariosNoValidados() {
+		ArrayList<Usuario> lstusuarios = new ArrayList<Usuario>();
+		 try{                  		         
+			 	Connection con = gestorBDXml.getDataSource().getConnection(); 
+	        	String sql = "SELECT * FROM usuario WHERE validado = '" + 0 + "'";
+	        	Statement st = con.createStatement();
+	            ResultSet rs = st.executeQuery(sql);            
+	            if(rs.next()) { 
+	            	Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("contrasena"), rs.getString("imagen"), rs.getString("descripcion"), rs.getString("direccion"), rs.getInt("cp"), rs.getString("municipio"), rs.getString("provincia"), rs.getString("pais"), rs.getInt("telefono"), rs.getString("email"), rs.getInt("validado"), rs.getString("strValidado"));
+	            	lstusuarios.add(u);
+	            }
+	            rs.close();
+	            st.close();
+	            con.close();
+	         }
+	         catch (Exception e)  {
+	             System.err.println("Error en lstUsuariosNoValidados: " + e);
+	         } 
+		 return lstusuarios;
+	}
+		
+	// Metodo que busca un usuario en la BD por su email y contraseña
 	public Usuario buscaUsuario(String email, String password) { 
 		Usuario u = null;
 		 try{                  		         
@@ -37,6 +82,8 @@ public class UsuarioDAO {
 	         } 
 		 return u;
 	}
+	
+	// Metodo que valida un usuario
 	public Usuario validarCadena(String nombre, String cadena) { 
 		Usuario u = null;
 		 try{                  		         

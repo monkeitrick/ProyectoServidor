@@ -26,17 +26,32 @@
       <param-value>proveedores.txt</param-value>
     </init-param>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProveedores</servlet-name>
+    <url-pattern>/ServletProveedores</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ServletVaciarCesta</servlet-name>
     <servlet-class>servlets.ServletVaciarCesta</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletProveedores</servlet-name>
-    <url-pattern>/ServletProveedores</url-pattern>
-  </servlet-mapping>
-   <servlet-mapping>
     <servlet-name>ServletVaciarCesta</servlet-name>
     <url-pattern>/ServletVaciarCesta</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>servletUsuarios</servlet-name>
+    <servlet-class>servlets.servletUsuarios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletUsuarios</servlet-name>
+    <url-pattern>/servletUsuarios</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletAgregarLineaPedidos</servlet-name>
+    <servlet-class>servlets.ServletAgregarLineaPedidos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAgregarLineaPedidos</servlet-name>
+    <url-pattern>/ServletAgregarLineaPedidos</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -21,7 +21,6 @@ import dao.PedidoDAO;
 /**
  * Servlet implementation class ServletAgregarLineaPedidos
  */
-@WebServlet("/ServletAgregarLineaPedidos")
 public class ServletAgregarLineaPedidos extends HttpServlet {
 	private PedidoDAO bdPedido;
     

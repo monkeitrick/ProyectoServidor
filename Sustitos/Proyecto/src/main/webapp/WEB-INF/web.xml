@@ -19,6 +19,14 @@
     <url-pattern>/ServletLogin</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ServletProductos</servlet-name>
+    <servlet-class>servlets.ServletProductos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProductos</servlet-name>
+    <url-pattern>/ServletProductos</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ServletProveedores</servlet-name>
     <servlet-class>servlets.ServletProveedores</servlet-class>
     <init-param>

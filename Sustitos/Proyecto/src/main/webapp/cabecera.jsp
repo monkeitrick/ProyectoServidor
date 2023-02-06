@@ -23,10 +23,10 @@
 	          		<a class="nav-link active" aria-current="page" href="#">${usuario.nombre}</a>
 	        	</li>
 	        	<li class="nav-item">
-          			<a class="nav-link" href="#">Iniciar Sesion</a>
+          			<a class="nav-link" href="listadoCesta.jsp">Carrito</a>
         		</li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">Crear Cuenta</a>
+		          <a class="nav-link" href="ServletLogin?cerrar">Cerrar Sesion</a>
 		        </li>
        		</c:when>
        		<c:otherwise>

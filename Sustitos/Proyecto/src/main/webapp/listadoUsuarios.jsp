@@ -14,16 +14,16 @@
 	<table class="table">
 		<tr>
 			<th>Imagen</th>
-	   		<th>Usuario</th>
+	   		<th>Email</th>
 	   		<th>Nombre</th>
 	   		<th class="hidden"></th>
 	   	</tr>
 	  
 		<c:forEach items="${lstUsuValidado}" var="usuario">
 			<tr>
-				<td><img src="<c:out value='${usuario.imagen}'/>"> </td>
-				<td><c:out value='${usuario.usuario}'/> </td>
-				<td><c:out value='${usuario.nombre}'/> <c:out value='${usuario.apellidos}'/> </td>
+				<!-- <td><img src="<c:out value='${usuario.imagen}'/>"> </td> -->
+				<td><c:out value="${usuario.email}"/> </td>
+				<td><c:out value="${usuario.nombre}"/> <c:out value="${usuario.apellido}"/> </td>
 				<td> <a class="btn btn-danger" href="ServletBorrar?usuario=${usuario.id}">Borrar</a></td>
 			</tr>
 		</c:forEach>
@@ -35,7 +35,7 @@
 	<table class="table">
 		<tr>
 			<th>Imagen</th>
-	   		<th>Usuario</th>
+	   		<th>Email</th>
 	   		<th>Nombre</th>
 	   		<th class="hidden"></th>
 	   	</tr>
@@ -43,8 +43,8 @@
 		<c:forEach items="${lstUsuNoValidado}" var="usuario">
 			<tr>
 				<td><img src="<c:out value='${usuario.imagen}'/>"> </td>
-				<td><c:out value='${usuario.usuario}'/> </td>
-				<td><c:out value='${usuario.nombre}'/> <c:out value='${usuario.apellidos}'/> </td>
+				<td><c:out value="${usuario.email}"/> </td>
+				<td><c:out value="${usuario.nombre}"/> <c:out value="${usuario.apellido}"/> </td>
 				<td> <a class="btn btn-danger" href="ServletBorrar?usuario=${usuario.id}">Borrar</a></td>
 			</tr>
 		</c:forEach>

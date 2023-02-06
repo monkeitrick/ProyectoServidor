@@ -18,7 +18,7 @@ public class ConexPoolBD {
     			InitialContext ctx = new InitialContext();
     			Context env = (Context) ctx.lookup("java:comp/env");
     			// nombre del recurso en el context.xml
-    			dataSource = (DataSource) env.lookup("jdbc/poolTiendaDB");
+    			dataSource = (DataSource) env.lookup("jdbc/poolSustitos");
     		
     		} catch (NamingException e) {
     				e.printStackTrace();

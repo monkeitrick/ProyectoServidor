@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%! int i; %>
 <!-- Añadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 <c:if test="${mensaje != null}">
@@ -32,10 +32,25 @@
 	  <!-- Submit button -->
 	  <button type="submit" class="btn btn-danger btn-block mb-4" name="login">Entrar</button>
 	  <c:if test="${mensajeError != null}">
-			<script type='text/javascript'>alert("${mensajeError}");</script>
+	  		<div class="alert alert-primary" role="alert">
+			  <c:out value = "${mensajeError}"/>
+			</div> 
 	  </c:if>
 	 
 	</form>
+	<c:if test="${strValidar != null}"> 
+		<form action="ServletLogin" method="post">
+		  <div class="form-outline mb-4">
+		  	<label class="form-label" for="nombre">Nombre</label>
+		    <input type="email" id="nombre" name="nombre" class="form-control"/>
+		  </div>
+			<div class="form-outline mb-4">
+			  	<label class="form-label" for="cadena">Cadena</label>
+			    <input type="text" id="cadena" class="form-control" name="cadena"/>
+			</div>
+			<button type="submit" class="btn btn-danger btn-block mb-4" name="validar">VALIDAR</button>
+		</form>
+	</c:if>
   </div>
  </div>
 </div>

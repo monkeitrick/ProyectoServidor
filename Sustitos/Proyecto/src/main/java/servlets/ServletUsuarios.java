@@ -14,7 +14,7 @@ import dao.UsuarioDAO;
 /**
  * Servlet implementation class servletUsuarios
  */
-public class servletUsuarios extends HttpServlet {
+public class ServletUsuarios extends HttpServlet {
 	private UsuarioDAO bdUsuario;
        
 	 @Override

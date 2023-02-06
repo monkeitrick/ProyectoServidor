@@ -47,12 +47,12 @@
     <url-pattern>/ServletVaciarCesta</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>servletUsuarios</servlet-name>
-    <servlet-class>servlets.servletUsuarios</servlet-class>
+    <servlet-name>ServletUsuarios</servlet-name>
+    <servlet-class>servlets.ServletUsuarios</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>servletUsuarios</servlet-name>
-    <url-pattern>/servletUsuarios</url-pattern>
+    <servlet-name>ServletUsuarios</servlet-name>
+    <url-pattern>/ServletUsuarios</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ServletAgregarLineaPedidos</servlet-name>

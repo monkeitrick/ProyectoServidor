@@ -50,8 +50,7 @@ public class ServletLogin extends HttpServlet {
 				request.getSession().setAttribute("usuario", user); 
 				if (user.getEmail().equals("admin@gmail.com")) {
 					response.sendRedirect("listadoUsuarios.jsp");   
-				}
-				if (user.getValidado() != 1) { 
+				}else if (user.getValidado() != 1) { 
 					//u.enviarConGMail(user.getEmail(), "VERIFICACIÓN SUSTITOS", "Cadena: "+user.getStrValidado());
 					request.getSession().setAttribute("mensaje", "Revisa tu correo e introduce la clave que se te ha enviado.");
 					request.getSession().setAttribute("strValidar", user.getStrValidado());
@@ -60,9 +59,7 @@ public class ServletLogin extends HttpServlet {
 				}else {
 					response.sendRedirect("listadoProductos.jsp"); 
 				}
-				
-			}
-			
+			} 
 		}
 		if (request.getParameter("validar") != null) {
 			String cadena = request.getParameter("cadena");

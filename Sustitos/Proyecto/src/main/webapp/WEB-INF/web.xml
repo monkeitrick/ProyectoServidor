@@ -4,6 +4,20 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/poolSustitos</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <servlet>
+    <servlet-name>ServletLogin</servlet-name>
+    <servlet-class>servlets.ServletLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogin</servlet-name>
+    <url-pattern>/ServletLogin</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ServletProveedores</servlet-name>
     <servlet-class>servlets.ServletProveedores</servlet-class>
@@ -24,10 +38,5 @@
     <servlet-name>ServletVaciarCesta</servlet-name>
     <url-pattern>/ServletVaciarCesta</url-pattern>
   </servlet-mapping>
-  <resource-ref>
-    <description>DB Connection</description>
-    <res-ref-name>jdbc/poolTiendaDB</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
+
 </web-app>

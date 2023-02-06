@@ -4,7 +4,7 @@
 <!-- Aniadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 
-<!-- Si no existe el array de productos lo crea-->
+	<!-- Si no existe el array de productos lo crea-->
 	<c:if test="${lstProductos == null}">
 		<jsp:forward page="servletProductos"/>
 	</c:if>
@@ -19,7 +19,7 @@
 		   		<th>Precio</th>
 		   		<th>Cantidad</th>
 		   		<th>Añadir</th>
-		   	</tr>		  
+		   	</tr>
 			<c:forEach items="${lstProductos}" var="producto">
 				<tr>
 					<td><c:out value='${producto.nombre}'/></td>

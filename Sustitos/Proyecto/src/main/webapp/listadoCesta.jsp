@@ -3,8 +3,6 @@
 <!-- Aniadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 
-
-
 	<!-- Lista de productos del carro -->
 	<h1>Cesta</h1>
 	<form action="ServletAgregarLineaPedidos" method="post">
@@ -32,5 +30,6 @@
 		<button type="submit" name="vaciar">VACIAR CESTA</button>
 		<button type="submit" name="continuar" >CONTINUAR COMPRANDO</button>
     </form>
+    
 <!-- Aniadimos el footer -->
 <c:import url="footer.jsp"/>

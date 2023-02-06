@@ -4,6 +4,11 @@
 <!-- Añadimos la cabecera -->
 <c:import url="cabecera.jsp"/>
 
+	<!-- Si no existe el array de productos lo crea-->
+	<c:if test="${lstUsuValidado == null}">
+		<jsp:forward page="servletUsuarios"/>
+	</c:if>
+
 	<!-- Lista de usuario validados -->
 	<h1>Usuarios Validados</h1>
 	<table class="table">
@@ -45,9 +50,6 @@
 		</c:forEach>
 	     
 	</table>
-
-
-
 
 <!-- Añadimos el footer -->
 <c:import url="footer.jsp"/>

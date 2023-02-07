@@ -33,7 +33,7 @@
 	  <!-- Submit button -->
 	  <button type="submit" class="btn btn-danger btn-block mb-4" name="login">Entrar</button>
 	  <c:if test="${mensajeError != null}">
-	  		<div class="alert alert-primary" role="alert">
+	  		<div>
 			  <c:out value = "${mensajeError}"/>
 			</div> 
 	  </c:if>

@@ -88,22 +88,25 @@ public class UsuarioDAO {
 	// Metodo que valida un usuario 
 	public boolean validarCadena(String email, String cadena) { 
 		int result = 0;
-		String sql = "UPDATE usuario SET validado = 1 WHERE email = '" + email + "' AND strValidado = '"+ cadena +"'";
-		 try{                  		         
+		String sql = "UPDATE usuario SET validado = 1 WHERE email = ? AND strValidado = ?";
+		 try{                  		 
 			 	Connection con = gestorBDXml.getDataSource().getConnection();
-			 	Statement pstm = con.createStatement();
-				result = pstm.executeUpdate(sql);
-				pstm.close();
+			 	PreparedStatement ps = con.prepareStatement (sql);
+			 	ps.setString(1, email); 
+			 	ps.setString(2, cadena); 
+			 	result = ps.executeUpdate();   		
+				ps.close();
 				con.close();
 				
 	         }
 	         catch (Exception e)  {
 	             System.err.println("Error en validarCadena(nombre, cadena): " + e);
 	         } 
-		 if (result > 0) {
-				return true;
-			}else 
-				return false;
+		if (result > 0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {

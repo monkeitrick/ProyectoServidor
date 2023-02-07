@@ -42,8 +42,8 @@
 	<c:if test="${strValidar != null}"> 
 		<form action="ServletLogin" method="post">
 		  <div class="form-outline mb-4">
-		  	<label class="form-label" for="nombre">Nombre</label>
-		    <input type="email" id="nombre" name="nombre" class="form-control"/>
+		  	<label class="form-label" for="nombre">Email a validar</label>
+		    <input type="email" id="nombre" name="email" class="form-control"/>
 		  </div>
 			<div class="form-outline mb-4">
 			  	<label class="form-label" for="cadena">Cadena</label>
@@ -55,6 +55,6 @@
   </div>
  </div>
 </div>
-
+<%session.invalidate();%>
 <!-- Añadimos el footer -->
 <c:import url="footer.jsp"/>

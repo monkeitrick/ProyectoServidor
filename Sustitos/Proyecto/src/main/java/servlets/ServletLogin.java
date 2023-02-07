@@ -56,14 +56,16 @@ public class ServletLogin extends HttpServlet {
 		}
 		if (request.getParameter("validar") != null) {
 			String cadena = request.getParameter("cadena");
-			String nombre = request.getParameter("nombre");
-			Usuario user = u.validarCadena(nombre, cadena);
-			if (user == null) {
+			String email = request.getParameter("email");
+			boolean todoBn = u.validarCadena(email, cadena);
+			if (todoBn == false) {
 				request.getSession().setAttribute("strValidar", null);
 				request.getSession().setAttribute("mensaje", "No se ha podido validar el usuario. Intentelo más tarde.");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}else {
-				
+				request.getSession().setAttribute("strValidar", null);
+				request.getSession().setAttribute("mensaje", "Usuario validado.");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		}
 	}

@@ -40,6 +40,22 @@ public class Usuario {
 
 	}
 
+	public Usuario(String nombre, String apellido, String contrasena, String imagen, String descripcion, String direccion, int cp, String municipio, String provincia, String pais, int telefono, String email, int validado, String strValidado) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.contrasena = contrasena;
+		this.imagen = imagen;
+        this.descripcion = descripcion;
+        this.cp = cp;
+        this.municipio = municipio;
+        this.provincia = provincia;
+        this.pais = pais;
+        this.telefono = telefono;
+        this.email = email;
+        this.validado = validado;
+        this.strValidado = strValidado; 
+	}
 	public Usuario(int id, String nombre, String apellido, String contrasena, String imagen, String descripcion, String direccion, int cp, String municipio, String provincia, String pais, int telefono, String email, int validado, String strValidado) {
 		super();
 		this.id = id;
@@ -57,7 +73,6 @@ public class Usuario {
         this.validado = validado;
         this.strValidado = strValidado; 
 	}
-
 	public int getId() {
 		return id;
 	}

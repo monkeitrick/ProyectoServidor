@@ -58,22 +58,26 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 		
 		if (request.getParameter("aniadir") != null) {
 			Producto producto = bdPedido.buscaProductoPorId(Integer.parseInt(request.getParameter("aniadir")));
-			
-			Pedido pedido = new Pedido();
-			double importe = producto.getPrecio() * Integer.parseInt(request.getParameter("" + producto.getId()));
-			pedido.setTotal(importe);
-			Date date = new Date();
-			pedido.setFecha(date);
-			Usuario cliente = (Usuario) request.getSession().getAttribute("cliente");
-			pedido.setUser(cliente);
-			
-			LineasPedido lineaPedido = new LineasPedido();
-			lineaPedido.setCantidad(Integer.parseInt(request.getParameter("" + producto.getId())));
-			lineaPedido.setProducto(producto);
-			lineaPedido.setPedido(pedido);
-			carroCompra.aniadeLinea(lineaPedido);
-			session.setAttribute("carroCompra", carroCompra);
-			
+			try {
+				int cant = Integer.parseInt(request.getParameter("" + producto.getId()));
+				Pedido pedido = new Pedido();
+				double importe = producto.getPrecio() * cant;
+				pedido.setTotal(importe);
+				Date date = new Date();
+				pedido.setFecha(date);
+				Usuario cliente = (Usuario) request.getSession().getAttribute("cliente");
+				pedido.setUser(cliente);
+				
+				LineasPedido lineaPedido = new LineasPedido();
+				lineaPedido.setCantidad(cant);
+				lineaPedido.setProducto(producto);
+				lineaPedido.setPedido(pedido);
+				carroCompra.aniadeLinea(lineaPedido);
+				session.setAttribute("carroCompra", carroCompra);
+				
+			}catch (NumberFormatException e)  {
+				request.setAttribute("mensajeError", "Debes introducir una cantida");
+	        } 
 			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 		}
 		

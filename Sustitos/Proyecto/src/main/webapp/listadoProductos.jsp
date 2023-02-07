@@ -11,8 +11,13 @@
 
 	<!-- Lista de productos -->
 	<h1>Productos</h1>
-	<form action="ServletAgregarLineaPedidos" method="post">
 	
+	<!-- Mensaje de error por si no introducen ningun valor al añadir -->
+	<c:if test="${mensajeError != null}">
+	  	<p style="color: green">"${mensajeError}"</p>
+	</c:if>
+	  
+	<form action="ServletAgregarLineaPedidos" method="post">
 		<table class="table">
 			<tr>
 		   		<th>Nombre</th>

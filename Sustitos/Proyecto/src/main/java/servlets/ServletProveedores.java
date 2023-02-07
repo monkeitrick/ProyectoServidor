@@ -1,10 +1,10 @@
 package servlets;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -80,38 +80,42 @@ public class ServletProveedores extends HttpServlet {
 			Proveedor proveedorNuevo = (Proveedor) session.getAttribute("proveedor");
 		
 			//Si el encargado ha sido actualizado lo cambiamos
-			if(request.getParameter("encargado")!= null) {
-				proveedorNuevo.setEncargado(request.getParameter("encargado"));
+			if(!request.getParameter("encargado").equals("")) {
+				System.out.println(request.getParameter("encargado"));
+				String encargado=request.getParameter("encargado");
+				proveedorNuevo.setEncargado(encargado);
 			}
 			
 			// Si la categoria ha sido actualizada la cambiamos
-			if(request.getParameter("categoria")!= null) {
-				proveedorNuevo.setEncargado(request.getParameter("categoria"));
+			if(!request.getParameter("categoria").equals("")) {
+				proveedorNuevo.setCategoria(request.getParameter("categoria"));
 			}
 			
 			// Si el telefono ha sido actualizado lo cambiamos
-			if(request.getParameter("telefono")!= null) {
-				proveedorNuevo.setEncargado(request.getParameter("telefono"));
+			if(!request.getParameter("telefono").equals("")) {
+				int telefono=Integer.valueOf(request.getParameter("telefono"));
+				proveedorNuevo.setTelefono(telefono);
 			}
 			
 			// Si el email ha sido actualizado lo cambiamos
-			if(request.getParameter("email")!= null) {
-				proveedorNuevo.setEncargado(request.getParameter("email"));
+			if(!request.getParameter("email").equals("")) {
+				proveedorNuevo.setEmail(request.getParameter("email"));
 			}
 			
 			// Actualizamos el mapa de proveedores
 			HashMap<String,Proveedor> lstProveedores = (HashMap<String, Proveedor>) session.getAttribute("proveedores");
 			lstProveedores.put(request.getParameter("claveProveedor"), proveedorNuevo);
+			session.setAttribute("proveedores", lstProveedores);
 			
 			// Actualizamos el fichero de proveedores
 			String fichero = this.getInitParameter("fichero");
 			
-			BufferedWriter out = new BufferedWriter(new FileWriter(fichero));
-			for(Proveedor p:lstProveedores.values()) {
-				out.write(p.toString());
+			PrintWriter pw = new PrintWriter(new FileWriter(fichero));
+			for(Proveedor p : lstProveedores.values()) {
+				pw.println(p.toString());
 			}
 			
-			out.close();
+			pw.close();
 			
 			// Redirigimos a la pantalla de listado de proveedores
 			request.getRequestDispatcher("listadoProveedores.jsp").forward(request, response);

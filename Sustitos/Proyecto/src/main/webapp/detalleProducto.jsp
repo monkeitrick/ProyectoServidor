@@ -17,8 +17,8 @@
 		<tr>
 			<td><c:out value='${producto.nombre}'/></td>
 			<td><c:out value='${producto.descripcion}'/></td>
-			<td><c:out value='${producto.precio}'/></td>
-			<td><c:out value='${producto.categoria}'/></td>
+			<td><c:out value='${producto.precio}'/>$</td>
+			<td><c:out value='${producto.cat}'/></td>
 		</tr>
 	</table>
 	<a href="listadoProductos.jsp" class="btn btn-danger">Seguir Comprando</a>

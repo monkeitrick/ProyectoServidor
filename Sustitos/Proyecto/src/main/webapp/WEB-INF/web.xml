@@ -62,4 +62,12 @@
     <servlet-name>ServletAgregarLineaPedidos</servlet-name>
     <url-pattern>/ServletAgregarLineaPedidos</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletRecuperarPass</servlet-name>
+    <servlet-class>servlets.ServletRecuperarPass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRecuperarPass</servlet-name>
+    <url-pattern>/ServletRecuperarPass</url-pattern>
+  </servlet-mapping>
 </web-app>

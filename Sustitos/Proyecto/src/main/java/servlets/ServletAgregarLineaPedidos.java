@@ -81,6 +81,12 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 		}
 		
+		if (request.getParameter("detalles") != null) {
+			Producto producto = bdPedido.buscaProductoPorId(Integer.parseInt(request.getParameter("aniadir")));
+			session.setAttribute("producto", producto);
+			request.getRequestDispatcher("detalleProducto.jsp").forward(request, response);
+		}
+		
 		if (request.getParameter("vaciar") != null) {
 			request.getRequestDispatcher("ServletVaciarCesta").forward(request, response);
 		}

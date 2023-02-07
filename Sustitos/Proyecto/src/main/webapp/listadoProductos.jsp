@@ -30,7 +30,10 @@
 					<td><c:out value='${producto.nombre}'/></td>
 					<td><c:out value='${producto.precio}'/></td>
 					<td><input type="number" name="${producto.id}" ></td>
-					<td><button type="submit" class="btn btn-danger" name="aniadir" value="${producto.id}">Añadir</button></td>
+					<td>
+						<button type="submit" class="btn btn-danger" name="aniadir" value="${producto.id}">Añadir</button>
+						<button type="submit" class="btn btn-danger" name="detalles" value="${producto.id}">Más info</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

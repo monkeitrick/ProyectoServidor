@@ -27,7 +27,7 @@ public class UsuarioDAO {
 	        	String sql = "SELECT * FROM usuario WHERE validado = '" + 1 + "'";
 	        	Statement st = con.createStatement();
 	            ResultSet rs = st.executeQuery(sql);            
-	            if(rs.next()) { 
+	            while(rs.next()) { 
 	            	Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("contrasena"), rs.getString("imagen"), rs.getString("descripcion"), rs.getString("direccion"), rs.getInt("cp"), rs.getString("municipio"), rs.getString("provincia"), rs.getString("pais"), rs.getInt("telefono"), rs.getString("email"), rs.getInt("validado"), rs.getString("strValidado"));
 	            	lstusuarios.add(u);
 	            }
@@ -40,6 +40,7 @@ public class UsuarioDAO {
 	         } 
 		 return lstusuarios;
 	}
+	
 	// Metodo que lista los usuarios no validados
 	public ArrayList<Usuario> lstUsuariosNoValidados() {
 		ArrayList<Usuario> lstusuarios = new ArrayList<Usuario>();
@@ -48,7 +49,7 @@ public class UsuarioDAO {
 	        	String sql = "SELECT * FROM usuario WHERE validado = '" + 0 + "'";
 	        	Statement st = con.createStatement();
 	            ResultSet rs = st.executeQuery(sql);            
-	            if(rs.next()) { 
+	            while(rs.next()) { 
 	            	Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("contrasena"), rs.getString("imagen"), rs.getString("descripcion"), rs.getString("direccion"), rs.getInt("cp"), rs.getString("municipio"), rs.getString("provincia"), rs.getString("pais"), rs.getInt("telefono"), rs.getString("email"), rs.getInt("validado"), rs.getString("strValidado"));
 	            	lstusuarios.add(u);
 	            }
@@ -103,6 +104,7 @@ public class UsuarioDAO {
 	         } 
 		return u;
 	}
+	
 	public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
 	    //La dirección de correo de envío
 	    String remitente = "sustitosexpres@gmail.com";

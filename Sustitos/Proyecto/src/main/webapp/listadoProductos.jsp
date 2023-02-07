@@ -6,7 +6,7 @@
 
 	<!-- Si no existe el array de productos lo crea-->
 	<c:if test="${lstProductos == null}">
-		<jsp:forward page="servletProductos"/>
+		<jsp:forward page="ServletProductos"/>
 	</c:if>
 
 	<!-- Lista de productos -->
@@ -24,12 +24,13 @@
 				<tr>
 					<td><c:out value='${producto.nombre}'/></td>
 					<td><c:out value='${producto.precio}'/></td>
-					<td><input type="number" name="cantidad" ></td>
-					<td><button type="sumbit" class="btn btn-danger" name="aniadir" value="${producto.id}">Añadir</button></td>
+					<td><input type="number" name="${producto.id}" ></td>
+					<td><button type="submit" class="btn btn-danger" name="aniadir" value="${producto.id}">Añadir</button></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="sumbit" class="btn btn-danger" name="verCesta">Ver cesta</button>
+		<button type="submit" class="btn btn-danger" name="verCesta">Ver cesta</button>
     </form>
+    
 <!-- Aniadimos el footer -->
 <c:import url="footer.jsp"/>

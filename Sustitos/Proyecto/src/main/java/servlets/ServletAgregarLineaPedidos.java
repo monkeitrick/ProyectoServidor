@@ -70,6 +70,7 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 			LineasPedido lineaPedido = new LineasPedido();
 			lineaPedido.setCantidad(Integer.parseInt(request.getParameter("" + producto.getId())));
 			lineaPedido.setProducto(producto);
+			lineaPedido.setPedido(pedido);
 			carroCompra.aniadeLinea(lineaPedido);
 			session.setAttribute("carroCompra", carroCompra);
 			

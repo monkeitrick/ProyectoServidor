@@ -12,23 +12,23 @@
 		   		<th>Nombre</th>
 		   		<th>Precio</th>
 		   		<th>Cantidad</th>
-		   		<th>Cambiar</th>
+		   		<th>Borrar</th>
 		   	</tr>		  
 			<c:forEach items="${carroCompra.getCarro()}" var="carro">
 				<tr>
 					<td><c:out value='${carro.value.producto.getNombre()}'/></td>
 					<td><c:out value='${carro.value.producto.getPrecio()}'/></td>
-					<td><c:out value='${carro.value.cantidad()}'/></td>
+					<td><c:out value='${carro.value.cantidad}'/></td>
 					<td><button type="submit" class="btn btn-danger" name="borrar" value="${carro.key}">Borrar</button></td>
 				</tr>
 			</c:forEach>
 			<tr>	
 				<td colspan="3"><b>TOTAL:</b></td>
-				<td><c:out value='${carroCompra.total()}'/>€</td>
+				<td><c:out value='${carroCompra.total()}'/>$</td>
 			</tr>
 		</table>
-		<button type="submit" name="vaciar">VACIAR CESTA</button>
-		<button type="submit" name="continuar" >CONTINUAR COMPRANDO</button>
+		<button type="submit" class="btn btn-danger" name="vaciar">VACIAR CESTA</button>
+		<button type="submit" class="btn btn-danger" name="continuar" >CONTINUAR COMPRANDO</button>
     </form>
     
 <!-- Aniadimos el footer -->

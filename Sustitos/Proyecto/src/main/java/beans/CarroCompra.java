@@ -41,7 +41,7 @@ public class CarroCompra {
 	public double total() {
 		double total = 0;
 		for(LineasPedido linea : carro.values()){
-			total+=linea.getCantidad();
+			total+= linea.getPedido().getTotal();
 		}
 		return total;
 	}

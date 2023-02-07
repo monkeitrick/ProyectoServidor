@@ -42,6 +42,7 @@ public class ServletLogin extends HttpServlet {
 			}else {
 				request.getSession().setAttribute("usuario", user); 
 				if (user.getEmail().equals("admin@gmail.com")) {
+					request.getSession().setAttribute("esAdmin", true); 
 					response.sendRedirect("listadoUsuarios.jsp");   
 				}else if (user.getValidado() != 1) { 
 					//u.enviarConGMail(user.getEmail(), "VERIFICACIÓN SUSTITOS", "Cadena: "+user.getStrValidado());

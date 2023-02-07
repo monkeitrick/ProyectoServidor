@@ -27,6 +27,7 @@
 	   <div class="col">
 	     <!-- Simple link -->
 		<a href="recuperarPass.jsp">¿Olvidaste tu contraseña?</a>
+		<a href="registro.jsp">¿No tienes cuenta? Registrate</a>
 	   </div>
 	  
 	  <!-- Submit button -->

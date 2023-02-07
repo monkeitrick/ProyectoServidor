@@ -21,8 +21,9 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getAttribute("cerrar") != null) {
+		if(request.getParameter("cerrar") != null) { 
 			request.getSession().invalidate();
+			request.getSession().setAttribute("mensaje", "Has cerrado sesión correctamente.");
 			response.sendRedirect("login.jsp");  
 		}
 	}

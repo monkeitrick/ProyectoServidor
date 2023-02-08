@@ -46,7 +46,7 @@
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                  	<label class="form-label" for="categoria">Ctaegoria*</label>
+                  	<label class="form-label" for="categoria">Categoria*</label>
                     <input type="text" id="categoria" name="categoria" class="form-control form-control-lg" />
                   </div>
 

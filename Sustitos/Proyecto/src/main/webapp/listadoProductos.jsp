@@ -14,10 +14,8 @@
 	
 	<!-- Mensaje de error por si no introducen ningun valor al añadir -->
 	<c:if test="${mensajeError != null}">
-	  		<div>
-			  <c:out value = "${mensajeError}"/>
-			</div> 
-	  </c:if>
+	  		<p><c:out value = "${mensajeError}"/></p> 
+	 </c:if>
 	  
 	<form action="ServletAgregarLineaPedidos" method="post">
 		<table class="table">

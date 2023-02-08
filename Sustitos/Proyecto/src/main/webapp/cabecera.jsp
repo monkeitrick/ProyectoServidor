@@ -47,7 +47,7 @@
 	            <li><a class="dropdown-item" href="listadoProveedores.jsp">Proveedores</a></li>
 	            <li><a class="dropdown-item" href="listadoUsuarios.jsp">Usuarios</a></li>
 	            <li><hr class="dropdown-divider"></li>
-	            <li><a class="dropdown-item" href="listadoProductos.jsp">Productos</a></li>
+	            <li><a class="dropdown-item" href="listadoProductosAdmin.jsp">Productos</a></li>
 	          </ul>
 	        </li>
        	</c:if>

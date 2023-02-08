@@ -20,7 +20,7 @@
       	<c:choose>
        		<c:when test="${usuario != null}">
 	       		<li class="nav-item">
-	          		<a class="nav-link active" aria-current="page" href="#">${usuario.nombre}</a>
+	          		<a class="nav-link active" aria-current="page" href="perfil.jsp">${usuario.nombre}</a>
 	        	</li>
 	        	<li class="nav-item">
           			<a class="nav-link" href="listadoCesta.jsp">Carrito</a>

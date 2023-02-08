@@ -149,7 +149,7 @@
     </div>
   </div>
 </section>
-
+<%session.invalidate();%>
 <!-- Añadimos el footer -->
 <c:import url="footer.jsp"/>
 

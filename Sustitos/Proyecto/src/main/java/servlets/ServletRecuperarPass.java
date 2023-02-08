@@ -34,7 +34,8 @@ public class ServletRecuperarPass extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.getSession().setAttribute("mensaje", "¡Se ha enviado un mensaje de verificación a tu correo!");
+		response.sendRedirect("recuperarPass.jsp");  
 	}
 
 }

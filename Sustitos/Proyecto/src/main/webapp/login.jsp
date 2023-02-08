@@ -3,10 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <%! int i; %>
 <!-- Añadimos la cabecera -->
-<c:import url="cabecera.jsp"/>
-<c:if test="${mensaje != null}">
-	<p style="color: green">"${mensaje}"</p>
-</c:if>	
+<c:import url="cabecera.jsp"/> 
 <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
      <div class="col-12 col-lg-9 col-xl-7">
@@ -23,6 +20,9 @@
 	  	<label class="form-label" for="password">Password</label>
 	    <input type="password" id="password" class="form-control" name="password"/>
 	  </div>
+		<c:if test="${mensaje != null}">
+			<label class="form-label" style="color: green">${mensaje}</label>
+		</c:if>
 	
 	   <div class="col">
 	     <!-- Simple link -->

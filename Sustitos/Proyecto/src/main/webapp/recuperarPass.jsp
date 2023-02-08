@@ -10,11 +10,7 @@
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Recuperar Contraseña</h3>
-            
-            <c:if test="${mensajeError != null}">
-				<script type='text/javascript'>alert("${mensajeError}");</script>
-			</c:if>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Recuperar Contraseña</h3> 
             
             <form action="ServletRecuperarPass" method="post">
 
@@ -37,7 +33,9 @@
 
                 </div>
               </div>
-              
+               <c:if test="${mensaje != null}">
+					<label class="form-label" style="color: green">${mensaje}</label>
+				</c:if>
 
               <div class="mt-4 pt-2">
               	<button class="btn btn-danger btn-lg" type="submit" name="registrarse">Recuperar</button>
@@ -50,7 +48,7 @@
     </div>
   </div>
 </section>
-
+<%session.invalidate();%>
 <!-- Añadimos el footer -->
 <c:import url="footer.jsp"/>
 

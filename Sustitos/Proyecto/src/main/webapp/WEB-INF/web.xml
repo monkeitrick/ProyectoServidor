@@ -70,4 +70,12 @@
     <servlet-name>ServletRecuperarPass</servlet-name>
     <url-pattern>/ServletRecuperarPass</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletPerfil</servlet-name>
+    <servlet-class>servlets.ServletPerfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletPerfil</servlet-name>
+    <url-pattern>/ServletPerfil</url-pattern>
+  </servlet-mapping>
 </web-app>

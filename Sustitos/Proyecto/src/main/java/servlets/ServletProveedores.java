@@ -110,7 +110,7 @@ public class ServletProveedores extends HttpServlet {
 			// Actualizamos el fichero de proveedores
 			String fichero = this.getInitParameter("fichero");
 			
-			PrintWriter pw = new PrintWriter(new FileWriter(fichero));
+			PrintWriter pw = new PrintWriter(new FileWriter(fichero));//No se actualiza por que necesitamos modificar la ruta
 			for(Proveedor p : lstProveedores.values()) {
 				pw.println(p.toString());
 			}

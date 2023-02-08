@@ -11,35 +11,28 @@
 
 	<!-- Lista de productos -->
 	<h1>Productos</h1>
-	
-	<!-- Mensaje de error por si no introducen ningun valor al añadir -->
-	<c:if test="${mensajeError != null}">
-	  		<div>
-			  <c:out value = "${mensajeError}"/>
-			</div> 
-	  </c:if>
 	  
 	<form action="ServletAgregarLineaPedidos" method="post">
 		<table class="table">
 			<tr>
 		   		<th>Nombre</th>
 		   		<th>Precio</th>
-		   		<th>Cantidad</th>
-		   		<th>Añadir</th>
+		   		<th>Descripcion<th>
+		   		<th>Borrar</th>
 		   	</tr>
 			<c:forEach items="${lstProductos}" var="producto">
 				<tr>
 					<td><c:out value='${producto.nombre}'/></td>
 					<td><c:out value='${producto.precio}'/></td>
-					<td><input type="number" name="${producto.id}" ></td>
+					<td><c:out value='${producto.descripcion}'/></td>
 					<td>
-						<button type="submit" class="btn btn-danger" name="aniadir" value="${producto.id}">Añadir</button>
+						<button type="submit" class="btn btn-danger" name="borrarProd" value="${producto.id}">Borrar</button>
 						<button type="submit" class="btn btn-danger" name="detalles" value="${producto.id}">Más info</button>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="submit" class="btn btn-danger" name="verCesta">Ver cesta</button>
+		<a href="aniadirProducto.jsp" class="btn btn-danger">Añadir Producto</a>
     </form>
     
 <!-- Aniadimos el footer -->

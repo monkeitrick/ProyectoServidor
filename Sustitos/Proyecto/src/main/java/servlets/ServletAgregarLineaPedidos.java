@@ -17,17 +17,20 @@ import beans.Pedido;
 import beans.Producto;
 import beans.Usuario;
 import dao.PedidoDAO;
+import dao.ProductoDAO;
 
 /**
  * Servlet implementation class ServletAgregarLineaPedidos
  */
 public class ServletAgregarLineaPedidos extends HttpServlet {
 	private PedidoDAO bdPedido;
+	private ProductoDAO bdProductos;
     
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         bdPedido = new PedidoDAO();
+        bdProductos = new ProductoDAO();
     }
 
 	/**
@@ -103,6 +106,12 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 			carroCompra = (CarroCompra) session.getAttribute("carroCompra");
 			carroCompra.borraLinea(Integer.parseInt(request.getParameter("borrar")));
 			request.getRequestDispatcher("listadoCesta.jsp").forward(request, response);
+		}
+		
+		if (request.getParameter("borrarProd") != null) {
+			
+			request.getSession().setAttribute("lstProductos", bdProductos.lstProductos());
+			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 		}
 	}
 

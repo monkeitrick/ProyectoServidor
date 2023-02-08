@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -33,5 +35,19 @@ public class ProductoDAO {
 	             System.err.println("Error en lstProductos: " + e);
 	         } 
 		 return lstproductos;
+	}
+	
+	// Metodo que elimina un producto pasado por id
+	public void borrarProducto (int id){
+		try{    
+			Connection con = gestorBDXml.getDataSource().getConnection(); 
+            PreparedStatement ps = con.prepareStatement("DELETE FROM producto WHERE id=?");
+            ps.setInt(1, id); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            System.err.println("Error en metodo borrarProducto: " + ex);
+        }
 	}
 }

@@ -26,8 +26,8 @@
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                  	<label class="form-label" for="precioMin">Precio Mínimo *</label>
-                    <input type="text" id="precioMin" name="precioMin" class="form-control form-control-lg" />
+                  	<label class="form-label" for="precio">Precio*</label>
+                    <input type="text" id="precio" name="precio" class="form-control form-control-lg" />
                   </div>
 
                 </div>
@@ -46,59 +46,16 @@
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                  	<label class="form-label" for="precioMax">Precio Máximo *</label>
-                    <input type="text" id="precioMax" name="precioMax" class="form-control form-control-lg" />
+                  	<label class="form-label" for="categoria">Ctaegoria*</label>
+                    <input type="text" id="categoria" name="categoria" class="form-control form-control-lg" />
                   </div>
 
                 </div>
               </div>
-              
-              <div class="row">
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                  	<label class="form-label" for="numUnidades">Nº de unidades *</label>
-                    <input type="text" id="numUnidades" name="numUnidades" class="form-control form-control-lg" />
-                    
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                  	<label class="form-label" for="tipo">Tipo *</label>
-                    <input type="text" id="tipo" name="tipo" class="form-control form-control-lg" />
-                  </div>
-
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                  	<label class="form-label" for="precioVenta">Precio de venta *</label>
-                    <input type="text" id="precioVenta" name="precioVenta" class="form-control form-control-lg" />
-                    
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline">
-                  	<label class="form-label" for="oferta">¿Esta de oferta?</label>
-                    <input type="checkbox" id="oferta" name="oferta" />
-                  </div>
-
-                </div>
-              </div>
-           
               <div class="mt-4 pt-2">
               	<button class="btn btn-danger btn-lg" type="submit" name="aniadir">Añadir Producto</button>
               </div>
-
             </form>
-            
           </div>
         </div>
       </div>

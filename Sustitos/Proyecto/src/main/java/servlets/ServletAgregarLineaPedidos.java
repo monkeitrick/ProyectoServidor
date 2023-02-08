@@ -109,9 +109,9 @@ public class ServletAgregarLineaPedidos extends HttpServlet {
 		}
 		
 		if (request.getParameter("borrarProd") != null) {
-			
+			bdProductos.borrarProducto(Integer.parseInt(request.getParameter("borrarProd")));
 			request.getSession().setAttribute("lstProductos", bdProductos.lstProductos());
-			request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
+			request.getRequestDispatcher("listadoProductosAdmin.jsp").forward(request, response);
 		}
 	}
 

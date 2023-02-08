@@ -22,9 +22,11 @@
 	       		<li class="nav-item">
 	          		<a class="nav-link active" aria-current="page" href="perfil.jsp">${usuario.nombre}</a>
 	        	</li>
-	        	<li class="nav-item">
-          			<a class="nav-link" href="listadoCesta.jsp">Carrito</a>
-        		</li>
+	        	<c:if test="${esAdmin != true}">
+		        	<li class="nav-item">
+	          			<a class="nav-link" href="listadoCesta.jsp">Carrito</a>
+	        		</li>
+	        	</c:if>
 		        <li class="nav-item">
 		          <a class="nav-link" href="ServletLogin?cerrar">Cerrar Sesion</a>
 		        </li>

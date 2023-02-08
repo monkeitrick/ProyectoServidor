@@ -27,7 +27,6 @@
 					<td><c:out value='${producto.descripcion}'/></td>
 					<td>
 						<button type="submit" class="btn btn-danger" name="borrarProd" value="${producto.id}">Borrar</button>
-						<button type="submit" class="btn btn-danger" name="detalles" value="${producto.id}">Más info</button>
 					</td>
 				</tr>
 			</c:forEach>

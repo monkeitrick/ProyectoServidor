@@ -36,7 +36,7 @@ public class ServletProductos extends HttpServlet {
 			request.getSession().setAttribute("lstProductos", bdProductos.lstProductos());
 		}
 		if (request.getSession().getAttribute("esAdmin") != null) {
-			if((boolean) request.getSession().getAttribute("esAdmin"))
+			if(request.getSession().getAttribute("esAdmin").equals("si"))
 		        request.getRequestDispatcher("listadoProductosAdmin.jsp").forward(request, response);
 		} 
         request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);

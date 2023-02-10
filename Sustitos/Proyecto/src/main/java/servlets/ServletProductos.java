@@ -16,6 +16,10 @@ import dao.ProductoDAO;
  */
 
 public class ServletProductos extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ProductoDAO bdProductos;
     
 	 @Override
@@ -31,8 +35,10 @@ public class ServletProductos extends HttpServlet {
 		if(request.getSession().getAttribute("lstProductos") == null) {
 			request.getSession().setAttribute("lstProductos", bdProductos.lstProductos());
 		}
-		if((boolean) request.getSession().getAttribute("esAdmin"))
-	        request.getRequestDispatcher("listadoProductosAdmin.jsp").forward(request, response);
+		if (request.getSession().getAttribute("esAdmin") != null) {
+			if((boolean) request.getSession().getAttribute("esAdmin"))
+		        request.getRequestDispatcher("listadoProductosAdmin.jsp").forward(request, response);
+		} 
         request.getRequestDispatcher("listadoProductos.jsp").forward(request, response);
 	}
 

@@ -22,7 +22,7 @@
 	       		<li class="nav-item">
 	          		<a class="nav-link active" aria-current="page" href="perfil.jsp">${usuario.nombre}</a>
 	        	</li>
-	        	<c:if test="${esAdmin != true}">
+	        	<c:if test="${!esAdmin.equals('si')}">
 		        	<li class="nav-item">
 	          			<a class="nav-link" href="listadoCesta.jsp">Carrito</a>
 	        		</li>
@@ -40,7 +40,7 @@
 	        	</li>
 	        </c:otherwise>
        	</c:choose>
-       	<c:if test="${esAdmin == true}">
+       	<c:if test="${esAdmin.equals('si')}">
 	       	<li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            Administrar

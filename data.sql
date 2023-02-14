@@ -1,3 +1,5 @@
+CREATE DATABASE bdsustitos;
+use bdsustitos;
 CREATE TABLE USUARIO (
     id int(11) AUTO_INCREMENT,
     nombre varchar(50) NOT NULL,
